@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7svyjw6i76uv"]
+[gd_scene load_steps=6 format=3 uid="uid://b7svyjw6i76uv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_f1t82"]
-[ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_s8yk8"]
+[ext_resource type="Texture2D" uid="uid://dy1kguvgmswug" path="res://Assets/enemy.png" id="2_ox6sv"]
+[ext_resource type="Script" path="res://Scripts/mover.gd" id="3_6qja8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_016ns"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ve8f5"]
+radius = 24.0
+height = 96.0
 
 [node name="Enemy0" type="Node2D"]
 
@@ -20,9 +25,19 @@ shape = SubResource("CircleShape2D_016ns")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 rotation = 1.5708
-texture = ExtResource("2_s8yk8")
+texture = ExtResource("2_ox6sv")
 
-[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D"]
+[node name="attack_hitbox" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attack_hitbox"]
+position = Vector2(40, 0)
+shape = SubResource("CapsuleShape2D_ve8f5")
+
+[node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
+script = ExtResource("3_6qja8")
+follow = NodePath("../CharacterBody2D")
+
+[node name="ProgressBar" type="ProgressBar" parent="mover"]
 offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
@@ -30,3 +45,5 @@ offset_bottom = -37.0
 value = 100.0
 allow_greater = true
 allow_lesser = true
+
+[connection signal="body_entered" from="CharacterBody2D/attack_hitbox" to="CharacterBody2D" method="body_entered_attack_hitbox"]

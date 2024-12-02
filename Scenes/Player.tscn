@@ -104,6 +104,7 @@ text = "JOY:"
 
 [node name="CameraTransform" type="Node2D" parent="."]
 script = ExtResource("4_mkc7n")
+lerpV = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="CameraTransform"]
 zoom = Vector2(1.375, 1.375)

@@ -13,7 +13,11 @@ var joy : float = 50
 
 func _ready():
 	manager_singleton.instance().player = self
-	
+
+func damage_player(amount, knockback):
+	joy -= amount
+	velocity = knockback
+
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	move_and_slide()

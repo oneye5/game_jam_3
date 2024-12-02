@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm2p3m5coxfkp"]
+
+[ext_resource type="Texture2D" uid="uid://dv2t6i2hefi1u" path="res://Assets/attack.png" id="1_813ak"]
+[ext_resource type="Script" path="res://Scripts/timed_destroyer.gd" id="1_w1hln"]
+
+[node name="EnemyAttack0" type="Node2D"]
+script = ExtResource("1_w1hln")
+lifetime = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(57, 0)
+rotation = 1.5708
+texture = ExtResource("1_813ak")
