@@ -19,6 +19,7 @@ script = ExtResource("1_f1t82")
 updateRate = 2.0
 acceleration = 10.0
 friction = 0.95
+knockback = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_016ns")
