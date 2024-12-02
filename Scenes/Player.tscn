@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckc2wb5ghhmsp"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0gdk2"]
+[ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_5hhlv"]
+[ext_resource type="Texture2D" uid="uid://bh6eh328swkhg" path="res://Assets/santaDefault-sheet.png" id="3_vdgqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo32s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0hym"]
+atlas = ExtResource("2_5hhlv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqg0j"]
+atlas = ExtResource("3_vdgqi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls2w2"]
+atlas = ExtResource("3_vdgqi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7lcc"]
+atlas = ExtResource("3_vdgqi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcacs"]
+atlas = ExtResource("3_vdgqi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0qvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0hym")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqg0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls2w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7lcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcacs")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
+}]
+
+[node name="Player" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("1_0gdk2")
+acceleration = 5.0
+friction = 0.95
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_jo32s")
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_o0qvl")
+
+[node name="children" type="Node" parent="."]

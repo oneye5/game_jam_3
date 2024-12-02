@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3uc5dalu5vhk"]
+
+[ext_resource type="Texture2D" uid="uid://bncdhg86techi" path="res://Assets/pesent.png" id="1_oyesm"]
+
+[node name="Projectile" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_oyesm")
