@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckc2wb5ghhmsp"]
+[gd_scene load_steps=12 format=3 uid="uid://ckc2wb5ghhmsp"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0gdk2"]
 [ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_5hhlv"]
 [ext_resource type="Texture2D" uid="uid://bh6eh328swkhg" path="res://Assets/santaDefault-sheet.png" id="3_vdgqi"]
+[ext_resource type="Script" path="res://Scripts/Camera_mover.gd" id="4_mkc7n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jo32s"]
 
@@ -56,19 +57,53 @@ animations = [{
 
 [node name="Player" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_0gdk2")
 acceleration = 20.0
 friction = 0.9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_jo32s")
 
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+z_index = 3
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_o0qvl")
 
 [node name="children" type="Node" parent="."]
+
+[node name="Player_UI" type="CanvasLayer" parent="."]
+
+[node name="joy_meter" type="ProgressBar" parent="Player_UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -27.0
+offset_right = 184.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Player_UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -27.0
+offset_right = -200.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "JOY:"
+
+[node name="CameraTransform" type="Node2D" parent="."]
+script = ExtResource("4_mkc7n")
+
+[node name="Camera2D" type="Camera2D" parent="CameraTransform"]
+zoom = Vector2(1.375, 1.375)

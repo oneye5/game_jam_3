@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ced4njp2w4snv"]
+[gd_scene load_steps=4 format=3 uid="uid://b7svyjw6i76uv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_f1t82"]
 [ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_s8yk8"]
@@ -7,16 +7,26 @@
 
 [node name="Enemy0" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_f1t82")
-updateRate = 1.0
-acceleration = 5.0
-friction = 0.97
+updateRate = 2.0
+acceleration = 10.0
+friction = 0.95
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_016ns")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 rotation = 1.5708
 texture = ExtResource("2_s8yk8")
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D"]
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = -37.0
+value = 100.0
+allow_greater = true
+allow_lesser = true
