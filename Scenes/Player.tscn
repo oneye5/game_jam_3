@@ -59,8 +59,8 @@ animations = [{
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
 script = ExtResource("1_0gdk2")
-acceleration = 5.0
-friction = 0.95
+acceleration = 20.0
+friction = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_jo32s")

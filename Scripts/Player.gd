@@ -1,9 +1,12 @@
+class_name  Player
 extends RigidBody2D
 @export var acceleration : float
 @export var friction : float
 @onready var children = $"../children"
 @onready var animatedSprite = $AnimatedSprite2D
 	
+func _ready():
+	manager_singleton.instance().player = self
 
 func _physics_process(delta: float) -> void:
 	_tick_controls()
