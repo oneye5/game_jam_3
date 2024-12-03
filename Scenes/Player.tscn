@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckc2wb5ghhmsp"]
+[gd_scene load_steps=13 format=3 uid="uid://ckc2wb5ghhmsp"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0gdk2"]
 [ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_5hhlv"]
 [ext_resource type="Texture2D" uid="uid://bh6eh328swkhg" path="res://Assets/santaDefault-sheet.png" id="3_vdgqi"]
 [ext_resource type="Script" path="res://Scripts/Camera_mover.gd" id="4_mkc7n"]
+[ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="5_x6aua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jo32s"]
 
@@ -108,3 +109,9 @@ lerpV = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="CameraTransform"]
 zoom = Vector2(1.375, 1.375)
+
+[node name="enemies" type="Node2D" parent="."]
+script = ExtResource("5_x6aua")
+wave_enemies = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+wave_reload_time = Array[float]([2.0])
+wave_max_living = Array[int]([5, 0, 0, 0, 0])

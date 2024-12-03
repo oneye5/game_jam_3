@@ -3,13 +3,14 @@ extends CharacterBody2D
 @export var acceleration : float
 @export var friction : float
 @export var reload_time : float = 0.5
+@export var shoot_cost : float = 1.0
 @onready var children = $"../children"
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var remaining_reload = reload_time
 @onready var joy_meter = $"../Player_UI/joy_meter"
 
 var joy : float = 50
-
+var max_joy : float = 100
 
 func _ready():
 	manager_singleton.instance().player = self
@@ -21,19 +22,17 @@ func damage_player(amount, knockback):
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	move_and_slide()
+	if max_joy < joy:
+		joy = max_joy
 
 func _physics_process(delta: float) -> void:
 	_tick_controls()
 	_tick_friction()
-	_tick_UI()
 	var cooldown_bonus = manager_singleton.instance().fire_rate_level/2.0
 	remaining_reload -= delta * (1 + cooldown_bonus)
 
 func eat_food(amount):
 	joy += amount
-
-func _tick_UI():
-	joy_meter.value = joy
 
 func _tick_controls():
 	var wishDir : Vector2 = Vector2.ZERO
@@ -46,6 +45,7 @@ func _tick_controls():
 	if Input.is_action_pressed("left"):
 		wishDir.x -= 1
 	if Input.is_action_pressed("shoot") and remaining_reload <= 0:
+		joy -= shoot_cost
 		remaining_reload = reload_time
 		var projectile = preload("res://Scenes/Projectile.tscn")
 		var newProjectile = projectile.instantiate()

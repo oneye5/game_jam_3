@@ -1,5 +1,5 @@
 extends Area2D
-@export var add_joy = 1
+@export var add_joy = 10
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:

@@ -2,7 +2,7 @@ class_name Enemy_0
 extends CharacterBody2D
 
 @export var updateRate : float
-@onready var target_pos : Vector2 = position
+@onready var target_pos : Vector2 = global_position
 @export var acceleration : float 
 @export var friction : float 
 @export var max_health : float = 100
@@ -32,7 +32,7 @@ func _tick_die():
 	if current_health <= 0:
 		var preLoadCookie = preload("res://Scenes/Food_pickup.tscn")
 		var cookie = preLoadCookie.instantiate()
-		cookie.position = position
+		cookie.global_position = global_position
 		cookie.rotation = 0
 		self.get_parent().get_parent().add_child(cookie)
 		self.get_parent().queue_free()
@@ -49,10 +49,10 @@ func _tick_update(d):
 		_update()
 	
 func _update():
-	target_pos = manager_singleton.instance().player.position
+	target_pos = manager_singleton.instance().player.global_position
 
 func _move():
-	var wishDir = (target_pos - position).normalized()
+	var wishDir = (target_pos - global_position).normalized()
 	rotation = velocity.angle()
 	velocity += (wishDir * acceleration)
 	velocity *= friction

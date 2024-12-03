@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://byj14mxjqdhpw"]
+[gd_scene load_steps=13 format=4 uid="uid://byj14mxjqdhpw"]
 
 [ext_resource type="TileSet" uid="uid://b6q2uo1thx0uk" path="res://Assets/new_tile_set.tres" id="1_xvlj3"]
 [ext_resource type="Texture2D" uid="uid://bqb34mhplf35s" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Water and Sand/Tileset_Water.png" id="2_xmmd2"]
 [ext_resource type="Texture2D" uid="uid://csft6lrlf0yhd" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Rocks/Atlas/Rocks.png" id="4_6bwdb"]
+[ext_resource type="Script" path="res://Scripts/spawnpoint.gd" id="5_a4poe"]
 [ext_resource type="Texture2D" uid="uid://dm8u8rlkiyrd1" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Trees and Bushes/Atlas/Trees_Bushes.png" id="5_x8147"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gv31v"]
@@ -468,3 +469,69 @@ shape = SubResource("RectangleShape2D_md7f0")
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD5/yYAAAAEAAMAAAD5/ycAAAAEAAQAAAD5/ygAAAAEAAUAAAD5/ykAAAAEAAYAAAD6/yYAAAAFAAMAAAD6/ycAAAAFAAQAAAD4/zkAAAAEAAMAAAD4/zoAAAAEAAQAAAD4/zsAAAAEAAUAAAD4/zwAAAAEAAYAAAD5/zkAAAAFAAMAAAD5/zoAAAAFAAQAAABCAAUAAAAEAAMAAABCAAYAAAAEAAQAAABCAAcAAAAEAAUAAABCAAgAAAAEAAYAAABDAAUAAAAFAAMAAABDAAYAAAAFAAQAAABCAB4AAAAEAAMAAABCAB8AAAAEAAQAAABCACAAAAAEAAUAAABCACEAAAAEAAYAAABDAB4AAAAFAAMAAABDAB8AAAAFAAQAAABDADkAAAAEAAMAAABDADoAAAAEAAQAAABDADsAAAAEAAUAAABDADwAAAAEAAYAAABEADkAAAAFAAMAAABEADoAAAAFAAQAAAAiAEIAAAAHAAAAAAAiAEMAAAAHAAEAAAAjAEIAAAAIAAAAAAAjAEMAAAAIAAEAAAAWAP7/AAAHAAAAAAAWAP//AAAHAAEAAAAXAP7/AAAIAAAAAAAXAP//AAAIAAEAAAAxACUAAAAKAAYAAAAxACYAAAAKAAcAAAAyACUAAAALAAYAAAAyACYAAAALAAcAAAA+AEoAAAAPAAMAAAA+AEsAAAAPAAQAAAA+AEwAAAAPAAUAAAA+AE0AAAAPAAYAAAA/AEoAAAAQAAMAAAA/AEsAAAAQAAQAAAA/AEwAAAAQAAUAAAA/AE0AAAAQAAYAAAAKAEQAAAARAAEAAAAkAB4AAAARAAEAAAAYAAcAAAARAAEAAAAqAP3/AAARAAEAAABCABEAAAARAAEAAAALADsAAAARAAEAAAABADAAAAARAAEAAAASAEoAAQAAAAAAAAASAEsAAQAAAAEAAAATAEoAAQABAAAAAAATAEsAAQABAAEAAABEAP3/AQAAAAAAAABEAP7/AQAAAAEAAABFAP3/AQABAAAAAABFAP7/AQABAAEAAAAZABkAAQAAAAAAAAAZABoAAQAAAAEAAAAaABkAAQABAAAAAAAaABoAAQABAAEAAAAoADAAAQADAAAAAAD6/xUAAQADAAAAAAA8AEMAAQADAAAAAAAJADkAAQAJAAEAAAAKADkAAQAKAAEAAAA2ADEAAQADAAAAAAA0AEcAAgAAAAAAAAA0AEgAAgAAAAEAAAA0AEkAAgAAAAIAAAA0AEoAAgAAAAMAAAA1AEcAAgABAAAAAAA1AEgAAgABAAEAAAA1AEkAAgABAAIAAAA1AEoAAgABAAMAAAA2AEcAAgACAAAAAAA2AEgAAgACAAEAAAA2AEkAAgACAAIAAAA2AEoAAgACAAMAAAA3AEgAAgADAAEAAAA3AEkAAgADAAIAAAA3AEoAAgADAAMAAAAlAPr/AgAAAAAAAAAlAPv/AgAAAAEAAAAlAPz/AgAAAAIAAAAlAP3/AgAAAAMAAAAmAPr/AgABAAAAAAAmAPv/AgABAAEAAAAmAPz/AgABAAIAAAAmAP3/AgABAAMAAAAnAPr/AgACAAAAAAAnAPv/AgACAAEAAAAnAPz/AgACAAIAAAAnAP3/AgACAAMAAAAoAPv/AgADAAEAAAAoAPz/AgADAAIAAAAoAP3/AgADAAMAAAAHACMAAgAAAAAAAAAHACQAAgAAAAEAAAAHACUAAgAAAAIAAAAHACYAAgAAAAMAAAAIACMAAgABAAAAAAAIACQAAgABAAEAAAAIACUAAgABAAIAAAAIACYAAgABAAMAAAAJACMAAgACAAAAAAAJACQAAgACAAEAAAAJACUAAgACAAIAAAAJACYAAgACAAMAAAAKACQAAgADAAEAAAAKACUAAgADAAIAAAAKACYAAgADAAMAAAAAAEgAAgAAAAAAAAAAAEkAAgAAAAEAAAAAAEoAAgAAAAIAAAAAAEsAAgAAAAMAAAABAEgAAgABAAAAAAABAEkAAgABAAEAAAABAEoAAgABAAIAAAABAEsAAgABAAMAAAACAEgAAgACAAAAAAACAEkAAgACAAEAAAACAEoAAgACAAIAAAACAEsAAgACAAMAAAADAEkAAgADAAEAAAADAEoAAgADAAIAAAADAEsAAgADAAMAAAAmAEwAAgASAAQAAAAnAEwAAgATAAQAAAAoAEwAAgAUAAQAAAAJAP3/AgASAAQAAAAKAP3/AgATAAQAAAALAP3/AgAUAAQAAAA3ACUAAgAWAAAAAAA3ACYAAgAWAAEAAAA4ACUAAgAXAAAAAAA4ACYAAgAXAAEAAAAbACoAAgAJAAEAAAAbACsAAgAJAAIAAAAbACwAAgAJAAMAAAAbAC0AAgAJAAQAAAAcACkAAgAKAAAAAAAcACoAAgAKAAEAAAAcACsAAgAKAAIAAAAcACwAAgAKAAMAAAAcAC0AAgAKAAQAAAAcAC4AAgAKAAUAAAAdACkAAgALAAAAAAAdACoAAgALAAEAAAAdACsAAgALAAIAAAAdACwAAgALAAMAAAAdAC0AAgALAAQAAAAdAC4AAgALAAUAAAAeACkAAgAMAAAAAAAeACoAAgAMAAEAAAAeACsAAgAMAAIAAAAeACwAAgAMAAMAAAAeAC0AAgAMAAQAAAALAEkAAgAJAAEAAAALAEoAAgAJAAIAAAALAEsAAgAJAAMAAAALAEwAAgAJAAQAAAAMAEgAAgAKAAAAAAAMAEkAAgAKAAEAAAAMAEoAAgAKAAIAAAAMAEsAAgAKAAMAAAAMAEwAAgAKAAQAAAAMAE0AAgAKAAUAAAANAEgAAgALAAAAAAANAEkAAgALAAEAAAANAEoAAgALAAIAAAANAEsAAgALAAMAAAANAEwAAgALAAQAAAANAE0AAgALAAUAAAAOAEgAAgAMAAAAAAAOAEkAAgAMAAEAAAAOAEoAAgAMAAIAAAAOAEsAAgAMAAMAAAAOAEwAAgAMAAQAAAD3/xAAAgADAAUAAAA=")
 tile_set = SubResource("TileSet_537q2")
+
+[node name="spawnpoints" type="Node2D" parent="."]
+
+[node name="spawn1" type="Node2D" parent="spawnpoints"]
+position = Vector2(-80, 8)
+script = ExtResource("5_a4poe")
+
+[node name="spawn2" type="Node2D" parent="spawnpoints"]
+position = Vector2(400, 8)
+script = ExtResource("5_a4poe")
+
+[node name="spawn3" type="Node2D" parent="spawnpoints"]
+position = Vector2(880, 8)
+script = ExtResource("5_a4poe")
+
+[node name="spawn4" type="Node2D" parent="spawnpoints"]
+position = Vector2(-40, 760)
+script = ExtResource("5_a4poe")
+
+[node name="spawn5" type="Node2D" parent="spawnpoints"]
+position = Vector2(-40, 1072)
+script = ExtResource("5_a4poe")
+
+[node name="spawn6" type="Node2D" parent="spawnpoints"]
+position = Vector2(432, 1096)
+script = ExtResource("5_a4poe")
+
+[node name="spawn7" type="Node2D" parent="spawnpoints"]
+position = Vector2(528, 376)
+script = ExtResource("5_a4poe")
+
+[node name="spawn8" type="Node2D" parent="spawnpoints"]
+position = Vector2(496, 736)
+script = ExtResource("5_a4poe")
+
+[node name="spawn9" type="Node2D" parent="spawnpoints"]
+position = Vector2(912, 936)
+script = ExtResource("5_a4poe")
+
+[node name="spawn10" type="Node2D" parent="spawnpoints"]
+position = Vector2(1024, 656)
+script = ExtResource("5_a4poe")
+
+[node name="spawn11" type="Node2D" parent="spawnpoints"]
+position = Vector2(1040, 432)
+script = ExtResource("5_a4poe")
+
+[node name="spawn12" type="Node2D" parent="spawnpoints"]
+position = Vector2(1088, 112)
+script = ExtResource("5_a4poe")
+
+[node name="spawn13" type="Node2D" parent="spawnpoints"]
+position = Vector2(520, 184)
+script = ExtResource("5_a4poe")
+
+[node name="spawn14" type="Node2D" parent="spawnpoints"]
+position = Vector2(112, 472)
+script = ExtResource("5_a4poe")
+
+[node name="spawn15" type="Node2D" parent="spawnpoints"]
+position = Vector2(232, 760)
+script = ExtResource("5_a4poe")
+
+[node name="spawn16" type="Node2D" parent="spawnpoints"]
+position = Vector2(608, 936)
+script = ExtResource("5_a4poe")

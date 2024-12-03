@@ -9,6 +9,8 @@ var damage_level = 0
 var projectile_level = 0
 var unique_upgrades = 0 
 
+var spawnPoints : Array = []
+
 @export var base_upgrade_cost = 10
 
 static func instance() -> manager_singleton:
