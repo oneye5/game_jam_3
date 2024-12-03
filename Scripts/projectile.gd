@@ -4,9 +4,11 @@ extends Area2D
 
 
 func _process(delta: float) -> void:
-	position += Vector2.from_angle(rotation) * speed * delta
+	var extra_speed = manager_singleton.instance().projectile_level * speed / 2.0
+	position += Vector2.from_angle(rotation) * (speed + extra_speed) * delta
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Enemy_0:
-		body._damage(damage)
+		var damage_extra = (manager_singleton.instance().damage_level * damage)/2.0
+		body._damage(damage + damage_extra)
 		queue_free()

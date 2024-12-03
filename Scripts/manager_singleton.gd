@@ -3,6 +3,14 @@ class_name manager_singleton
 var _instance = null
 var player : Player = null 
 
+#player upgrades
+var fire_rate_level = 0
+var damage_level = 0
+var projectile_level = 0
+var unique_upgrades = 0 
+
+@export var base_upgrade_cost = 10
+
 static func instance() -> manager_singleton:
 	if not Engine.has_singleton("manager_singleton"):
 		var singleton = manager_singleton.new()

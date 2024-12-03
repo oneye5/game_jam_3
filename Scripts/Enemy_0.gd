@@ -2,7 +2,6 @@ class_name Enemy_0
 extends CharacterBody2D
 
 @export var updateRate : float
-var remainingUpdateTime : float = updateRate
 @onready var target_pos : Vector2 = position
 @export var acceleration : float 
 @export var friction : float 
@@ -14,6 +13,11 @@ var remainingUpdateTime : float = updateRate
 @onready var attack_hitbox = $attack_hitbox
 @export var damage = 5
 @export var knockback = 200
+@export var enraged_boost : float = 2
+
+var remainingUpdateTime : float = updateRate
+
+
 func _process(delta: float) -> void:
 	move_and_slide()
 
@@ -64,3 +68,4 @@ func body_entered_attack_hitbox(body):
 		var attack = preloadAttack.instantiate()
 		
 		self.add_child(attack)
+		
