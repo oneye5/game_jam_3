@@ -11,6 +11,9 @@ var projectile_level = 0
 var upgrade_half_price_ammo_cost : int = 70
 var upgrade_half_price_ammo : bool = false
 
+var upgrade_dash : bool = false
+var upgrade_dash_cost = 50
+
 var spawnPoints : Array = []
 
 @export var base_upgrade_cost = 10

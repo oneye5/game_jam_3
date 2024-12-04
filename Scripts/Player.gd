@@ -9,6 +9,15 @@ extends CharacterBody2D
 @onready var remaining_reload = reload_time
 @onready var joy_meter = $"../Player_UI/joy_meter"
 
+@export var dash_cost = 3
+@export var dash_reload_time = 1
+@export var dash_duration = 0.1
+@export var dash_velocity = 800
+var dash_wishDir : Vector2 = Vector2.ONE
+var remaining_dash_duration : float = -1
+var remaining_dash_reload : float = 0
+
+
 var joy : float = 50
 var max_joy : float = 100
 
@@ -28,6 +37,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	_tick_controls()
 	_tick_friction()
+	_tick_dash(delta)
 	var cooldown_bonus = manager_singleton.instance().fire_rate_level/2.0
 	remaining_reload -= delta * (1 + cooldown_bonus)
 
@@ -70,6 +80,21 @@ func add_joy(amount):
 	show_floating_text("+" + str(amount) + "joy",1,Vector2.ONE*200,30,joy_meter.get_parent())
 	joy += amount
 
+func _tick_dash(delta):
+	if not manager_singleton.instance().upgrade_dash:
+		return 
+		
+	remaining_dash_reload -= delta
+	if remaining_dash_duration >= 0:
+		remaining_dash_duration -= delta
+		remaining_dash_reload = dash_reload_time
+		velocity = dash_wishDir * dash_velocity
+	
+	if Input.is_action_just_pressed("dash") and remaining_dash_reload <= 0:
+		remaining_dash_duration = dash_duration
+		remaining_dash_reload = dash_reload_time
+		dash_wishDir = (global_position - get_global_mouse_position()).normalized() * -1.0 
+		
 func show_floating_text(text: String, duration: float, position_range: Vector2, rotation_range: float, parent_node: Node): 
 	var label = Label.new() 
 	parent_node.add_child(label)

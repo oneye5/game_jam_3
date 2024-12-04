@@ -7,7 +7,6 @@
 script = ExtResource("1_yflx7")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,6 +59,7 @@ offset_bottom = -0.159988
 text = "Upgrade fire rate 
 -20 joy"
 script = ExtResource("1_glius")
+type = null
 
 [node name="Button2" type="Button" parent="Panel/Panel"]
 layout_mode = 1
@@ -127,7 +127,9 @@ offset_left = -8.128
 offset_top = 0.160004
 offset_right = -0.0961304
 offset_bottom = -0.160034
-text = "aasdasdasdasdasdasd"
+text = "dash"
+script = ExtResource("1_glius")
+type = 4
 
 [node name="Button5" type="Button" parent="Panel/Panel2"]
 layout_mode = 1
