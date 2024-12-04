@@ -38,7 +38,7 @@ func _tick_die():
 		self.get_parent().queue_free()
 
 func _damage(num):
-	velocity *= 0.2
+	velocity *= 0.01
 	current_health -= num
 	
 

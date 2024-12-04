@@ -44,6 +44,14 @@ func _physics_process(delta: float) -> void:
 			preloaded = preload("res://Scenes/Enemy_2.tscn")
 		if wave_enemies[current_enemy_count] == 3:
 			preloaded = preload("res://Scenes/Enemy_3.tscn")
+		if wave_enemies[current_enemy_count] == 10:
+			preloaded = preload("res://Scenes/Enemy_0_2.tscn")
+		if wave_enemies[current_enemy_count] == 11:
+			preloaded = preload("res://Scenes/Enemy_1_2.tscn")
+		if wave_enemies[current_enemy_count] == 12:
+			preloaded = preload("res://Scenes/Enemy_2_2.tscn")
+		if wave_enemies[current_enemy_count] == 13:
+			preloaded = preload("res://Scenes/Enemy_3_2.tscn")
 		# further types
 		
 		

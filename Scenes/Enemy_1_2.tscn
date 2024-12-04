@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3l8ks5eoekxm"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_oflt4"]
+[ext_resource type="Texture2D" uid="uid://be6wp0i5gjinp" path="res://Assets/enemy5.png" id="2_nqkgl"]
+[ext_resource type="Script" path="res://Scripts/mover.gd" id="3_is8ry"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lj21m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jsck"]
+radius = 12.0
+height = 36.0
+
+[node name="Enemy12" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_oflt4")
+updateRate = 0.125
+acceleration = 90.0
+friction = 0.8
+max_health = 350.0
+reload_time = 0.25
+damage = 15
+knockback = 2000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_lj21m")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+rotation = 1.5708
+texture = ExtResource("2_nqkgl")
+
+[node name="attack_hitbox" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attack_hitbox"]
+position = Vector2(15, 0)
+shape = SubResource("CapsuleShape2D_6jsck")
+
+[node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
+script = ExtResource("3_is8ry")
+follow = NodePath("../CharacterBody2D")
+
+[node name="ProgressBar" type="ProgressBar" parent="mover"]
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = -37.0
+allow_greater = true
+allow_lesser = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="CharacterBody2D/attack_hitbox" to="CharacterBody2D" method="body_entered_attack_hitbox"]

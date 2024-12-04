@@ -7,7 +7,9 @@ var player : Player = null
 var fire_rate_level = 0
 var damage_level = 0
 var projectile_level = 0
-var unique_upgrades = 0 
+
+var upgrade_half_price_ammo_cost : int = 70
+var upgrade_half_price_ammo : bool = false
 
 var spawnPoints : Array = []
 

@@ -42,7 +42,10 @@ func _tick_controls():
 	if Input.is_action_pressed("left"):
 		wishDir.x -= 1
 	if Input.is_action_pressed("shoot") and remaining_reload <= 0:
-		joy -= shoot_cost
+		if manager_singleton.instance().upgrade_half_price_ammo:
+			joy -= shoot_cost/2.0
+		else:
+			joy -= shoot_cost
 		remaining_reload = reload_time
 		var projectile = preload("res://Scenes/Projectile.tscn")
 		var newProjectile = projectile.instantiate()

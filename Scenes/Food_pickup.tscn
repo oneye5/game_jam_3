@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bejvb4kmjtdje" path="res://Assets/cookies.png" id="1_xg5oo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7qfi"]
+radius = 24.0
 
 [node name="FoodPickup" type="Node2D"]
 

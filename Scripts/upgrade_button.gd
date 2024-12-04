@@ -14,6 +14,11 @@ func _physics_process(delta: float) -> void:
 	if type == 2:
 		var cost = manager_singleton.instance().base_upgrade_cost * (manager_singleton.instance().projectile_level + 1)
 		text = "Upgrade projectile-speed\n-" + str(cost) + " joy"
+	if type == 3:
+		if manager_singleton.instance().upgrade_half_price_ammo:
+			text = "Half price presents is already owned"
+		else:
+			text = "Half price presents\n-" + str(manager_singleton.instance().upgrade_half_price_ammo_cost) + " joy"
 func _pressed():
 	if type == 0:
 		var cost = manager_singleton.instance().base_upgrade_cost * (manager_singleton.instance().damage_level + 1)
@@ -33,5 +38,13 @@ func _pressed():
 			return
 		manager_singleton.instance().player.joy -= cost
 		manager_singleton.instance().projectile_level += 1
+	if type == 3:
+		if manager_singleton.instance().upgrade_half_price_ammo:
+			return
+		var cost = manager_singleton.instance().upgrade_half_price_ammo_cost
+		if cost > manager_singleton.instance().player.joy:
+			return
+		manager_singleton.instance().player.joy -= cost
+		manager_singleton.instance().upgrade_half_price_ammo = true
 		
 		

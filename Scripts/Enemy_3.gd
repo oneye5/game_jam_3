@@ -61,12 +61,12 @@ func get_fire_offset(angle):
 func _shoot():
 	var proj_pre = preload("res://Scenes/Enemy_projectile.tscn")
 	var proj = proj_pre.instantiate()
-	proj.position = position
+	proj.global_position = global_position
 	proj.rotation = rotation 
 	
-	proj.position += get_fire_offset(rotation)
+	proj.global_position += get_fire_offset(rotation)
 	
-	self.get_parent().add_child(proj)
+	get_parent().get_parent().add_child(proj)
 	remaining_reload = reload_time
 
 func _tick_die():
@@ -80,5 +80,5 @@ func _tick_die():
 		self.get_parent().queue_free()
 
 func _damage(num):
-	velocity *= 0.2
+	velocity *= 0.01
 	current_health -= num
