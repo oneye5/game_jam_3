@@ -31,9 +31,6 @@ func _physics_process(delta: float) -> void:
 	var cooldown_bonus = manager_singleton.instance().fire_rate_level/2.0
 	remaining_reload -= delta * (1 + cooldown_bonus)
 
-func eat_food(amount):
-	joy += amount
-
 func _tick_controls():
 	var wishDir : Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("up"):
@@ -67,7 +64,7 @@ func _tick_animation():
 		animatedSprite.play("default")
 
 func add_joy(amount):
-	show_floating_text("+" + str(amount) + "joy",3,Vector2.ONE*3,30,joy_meter.get_parent())
+	show_floating_text("+" + str(amount) + "joy",1,Vector2.ONE*200,30,joy_meter.get_parent())
 	joy += amount
 
 func show_floating_text(text: String, duration: float, position_range: Vector2, rotation_range: float, parent_node: Node): 

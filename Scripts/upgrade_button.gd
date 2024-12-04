@@ -7,7 +7,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if type == 0:
 		var cost = manager_singleton.instance().base_upgrade_cost * (manager_singleton.instance().damage_level + 1)
-		text = "Upgrade damage\n-" + str(cost) + " joy"
+		text = "Upgrade present joy\n-" + str(cost) + " joy"
 	if type == 1:
 		var cost = manager_singleton.instance().base_upgrade_cost * (manager_singleton.instance().fire_rate_level + 1)
 		text = "Upgrade fire-rate\n-" + str(cost) + " joy"

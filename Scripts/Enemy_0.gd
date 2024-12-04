@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	remaining_reload -= delta
 
 func _tick_die():
-	healthbar.value = current_health
+	healthbar.value =  (1 - (current_health/max_health)) * 100
 	if current_health <= 0:
 		var preLoadCookie = preload("res://Scenes/Food_pickup.tscn")
 		var cookie = preLoadCookie.instantiate()
@@ -38,7 +38,7 @@ func _tick_die():
 		self.get_parent().queue_free()
 
 func _damage(num):
-	velocity = Vector2.ZERO
+	velocity *= 0.2
 	current_health -= num
 	
 
@@ -52,6 +52,11 @@ func _update():
 	target_pos = manager_singleton.instance().player.global_position
 
 func _move():
+	var d = global_position - target_pos
+	var dist_to_wish = sqrt((d.x * d.x) + (d.y * d.y))
+	if dist_to_wish < 50:
+		_update()
+	
 	var wishDir = (target_pos - global_position).normalized()
 	rotation = velocity.angle()
 	velocity += (wishDir * acceleration)

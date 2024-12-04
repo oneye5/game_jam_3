@@ -1,43 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7svyjw6i76uv"]
+[gd_scene load_steps=6 format=3 uid="uid://dafxd3ki60rst"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_f1t82"]
-[ext_resource type="Texture2D" uid="uid://dy1kguvgmswug" path="res://Assets/enemy.png" id="2_ox6sv"]
-[ext_resource type="Script" path="res://Scripts/mover.gd" id="3_6qja8"]
+[ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_nok7x"]
+[ext_resource type="Texture2D" uid="uid://djeiqa16dehdy" path="res://Assets/enemy1.png" id="2_s4t6j"]
+[ext_resource type="Script" path="res://Scripts/mover.gd" id="3_7vxh1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_016ns"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gu5nm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ve8f5"]
-radius = 24.0
-height = 96.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n71yu"]
+radius = 12.0
+height = 36.0
 
-[node name="Enemy0" type="Node2D"]
+[node name="Enemy1" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 motion_mode = 1
 platform_on_leave = 2
-script = ExtResource("1_f1t82")
-updateRate = 1.0
-acceleration = 12.0
-friction = 0.95
-max_health = 200.0
+script = ExtResource("1_nok7x")
+updateRate = 0.25
+acceleration = 75.0
+friction = 0.8
+max_health = 50.0
 reload_time = 0.25
-knockback = 1000
+damage = 15
+knockback = 2000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_016ns")
+shape = SubResource("CircleShape2D_gu5nm")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 rotation = 1.5708
-texture = ExtResource("2_ox6sv")
+texture = ExtResource("2_s4t6j")
 
 [node name="attack_hitbox" type="Area2D" parent="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attack_hitbox"]
-position = Vector2(40, 0)
-shape = SubResource("CapsuleShape2D_ve8f5")
+position = Vector2(15, 0)
+shape = SubResource("CapsuleShape2D_n71yu")
 
 [node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
-script = ExtResource("3_6qja8")
+script = ExtResource("3_7vxh1")
 follow = NodePath("../CharacterBody2D")
 
 [node name="ProgressBar" type="ProgressBar" parent="mover"]
@@ -45,7 +46,6 @@ offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -37.0
-value = 100.0
 allow_greater = true
 allow_lesser = true
 metadata/_edit_use_anchors_ = true

@@ -112,6 +112,7 @@ zoom = Vector2(1.375, 1.375)
 
 [node name="enemies" type="Node2D" parent="."]
 script = ExtResource("5_x6aua")
-wave_enemies = Array[int]([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-wave_reload_time = Array[float]([2.0])
-wave_max_living = Array[int]([5, 0, 0, 0, 0])
+wave_enemies = Array[int]([0, 0, 0, 0, 1, 1, 1, 0, 2, 1, 1, 2, 0, 1, 1, 1, 0, 0, 1, 2, 2, 3, 3, 2, 3, 3, 1, 1, 3, 1, 3, 3, 3, 2, 3, 2, 3, 2, 3, 1, 0, 1, 2, 3, 3, 2, 3, 3, 1, 1])
+wave_reload_time = Array[float]([3.0, 1.0, 3.0, 2.0, 1.5])
+wave_max_living = Array[int]([5, 5, 5, 8, 10])
+wave_enemy_count = Array[int]([3, 8, 20, 35, 50])
