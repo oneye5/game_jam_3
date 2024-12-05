@@ -2,6 +2,8 @@ extends CanvasLayer
 @onready var buy_panel = $Panel
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
+	buy_panel.visible = true
+	get_tree().paused = true
 
 func _process(delta: float) -> void:
 	manager_singleton.instance().player.joy_meter.value = manager_singleton.instance().player.joy
