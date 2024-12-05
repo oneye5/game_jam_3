@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bktg3gpe3ti40"]
+[gd_scene load_steps=7 format=3 uid="uid://bktg3gpe3ti40"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_5l1f4"]
 [ext_resource type="Texture2D" uid="uid://cr04mkx726vbr" path="res://Assets/enemy6.png" id="2_5t08n"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_fot32"]
+[ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="4_hnc2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m1ss1"]
 radius = 23.0
@@ -29,6 +30,7 @@ knockback = 4000
 shape = SubResource("CircleShape2D_m1ss1")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 1
 rotation = 1.5708
 texture = ExtResource("2_5t08n")
 
@@ -50,5 +52,7 @@ offset_bottom = -37.0
 allow_greater = true
 allow_lesser = true
 metadata/_edit_use_anchors_ = true
+
+[node name="TrailParticles" parent="." instance=ExtResource("4_hnc2i")]
 
 [connection signal="body_entered" from="CharacterBody2D/attack_hitbox" to="CharacterBody2D" method="body_entered_attack_hitbox"]

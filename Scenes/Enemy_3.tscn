@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://822nyoinkp8w"]
+[gd_scene load_steps=6 format=3 uid="uid://822nyoinkp8w"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_3.gd" id="1_taafx"]
 [ext_resource type="Texture2D" uid="uid://cu3jhqe64hwf7" path="res://Assets/enemy3.png" id="2_1phr3"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_faikb"]
+[ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="3_sakrv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_87c8f"]
 radius = 23.0
@@ -28,6 +29,8 @@ shape = SubResource("CircleShape2D_87c8f")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 rotation = 1.5708
 texture = ExtResource("2_1phr3")
+
+[node name="TrailParticles" parent="CharacterBody2D" instance=ExtResource("3_sakrv")]
 
 [node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
 script = ExtResource("3_faikb")

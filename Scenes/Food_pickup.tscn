@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bejvb4kmjtdje" path="res://Assets/cookies.png" id="1_xg5oo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7qfi"]
-radius = 24.0
+radius = 40.0
 
 [node name="FoodPickup" type="Node2D"]
 
@@ -15,8 +15,8 @@ script = ExtResource("1_uhk5k")
 shape = SubResource("CircleShape2D_a7qfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-1.90735e-06, 4.76837e-07)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_xg5oo")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

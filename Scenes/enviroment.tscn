@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://byj14mxjqdhpw"]
+[gd_scene load_steps=25 format=4 uid="uid://byj14mxjqdhpw"]
 
 [ext_resource type="TileSet" uid="uid://b6q2uo1thx0uk" path="res://Assets/new_tile_set.tres" id="1_xvlj3"]
 [ext_resource type="Texture2D" uid="uid://bqb34mhplf35s" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Water and Sand/Tileset_Water.png" id="2_xmmd2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dm8u8rlkiyrd1" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Trees and Bushes/Atlas/Trees_Bushes.png" id="5_x8147"]
 [ext_resource type="Shader" path="res://Scripts/chromatic.gdshader" id="7_11qx8"]
 [ext_resource type="Texture2D" uid="uid://bm1028bn0onhi" path="res://Assets/snow.png" id="8_f6krg"]
+[ext_resource type="Shader" path="res://Scripts/pixelate.gdshader" id="8_hyvcc"]
 [ext_resource type="Texture2D" uid="uid://jujyuv17bdm1" path="res://Assets/snowman.png" id="9_qanhd"]
 [ext_resource type="Texture2D" uid="uid://b1ptqbm57howr" path="res://Assets/radial_gradient.png" id="10_we87c"]
 
@@ -445,7 +446,8 @@ sources/0 = SubResource("TileSetAtlasSource_gv31v")
 [sub_resource type="Environment" id="Environment_uou7t"]
 background_mode = 3
 glow_enabled = true
-glow_bloom = 0.74
+glow_intensity = 2.13
+glow_bloom = 0.51
 glow_hdr_threshold = 0.0
 adjustment_enabled = true
 adjustment_brightness = 0.65
@@ -455,7 +457,11 @@ shader = ExtResource("7_11qx8")
 shader_parameter/r_displacement = Vector2(3, 3)
 shader_parameter/g_displacement = Vector2(0, 3)
 shader_parameter/b_displacement = Vector2(-3, -3)
-shader_parameter/intensity = 0.598
+shader_parameter/intensity = 1.198
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc442"]
+shader = ExtResource("8_hyvcc")
+shader_parameter/pixel_size = 2.0
 
 [sub_resource type="Gradient" id="Gradient_fv2lq"]
 offsets = PackedFloat32Array(0.149171, 1)
@@ -493,7 +499,7 @@ position = Vector2(792, 184)
 polygon = PackedVector2Array(16, -16, 56, 80, 72, 240, 72, 304, 32, 472, -8, 504, -64, 488, -96, 368, -104, 240, -80, 56, -64, 8, -40, -16, -8, -24)
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD5/yYAAAAEAAMAAAD5/ycAAAAEAAQAAAD5/ygAAAAEAAUAAAD5/ykAAAAEAAYAAAD6/yYAAAAFAAMAAAD6/ycAAAAFAAQAAAD4/zkAAAAEAAMAAAD4/zoAAAAEAAQAAAD4/zsAAAAEAAUAAAD4/zwAAAAEAAYAAAD5/zkAAAAFAAMAAAD5/zoAAAAFAAQAAABCAAUAAAAEAAMAAABCAAYAAAAEAAQAAABCAAcAAAAEAAUAAABCAAgAAAAEAAYAAABDAAUAAAAFAAMAAABDAAYAAAAFAAQAAABCAB4AAAAEAAMAAABCAB8AAAAEAAQAAABCACAAAAAEAAUAAABCACEAAAAEAAYAAABDAB4AAAAFAAMAAABDAB8AAAAFAAQAAABDADkAAAAEAAMAAABDADoAAAAEAAQAAABDADsAAAAEAAUAAABDADwAAAAEAAYAAABEADkAAAAFAAMAAABEADoAAAAFAAQAAAAiAEIAAAAHAAAAAAAiAEMAAAAHAAEAAAAjAEIAAAAIAAAAAAAjAEMAAAAIAAEAAAAWAP7/AAAHAAAAAAAWAP//AAAHAAEAAAAXAP7/AAAIAAAAAAAXAP//AAAIAAEAAAAxACUAAAAKAAYAAAAxACYAAAAKAAcAAAAyACUAAAALAAYAAAAyACYAAAALAAcAAAA+AEoAAAAPAAMAAAA+AEsAAAAPAAQAAAA+AEwAAAAPAAUAAAA+AE0AAAAPAAYAAAA/AEoAAAAQAAMAAAA/AEsAAAAQAAQAAAA/AEwAAAAQAAUAAAA/AE0AAAAQAAYAAAAKAEQAAAARAAEAAAAkAB4AAAARAAEAAAAYAAcAAAARAAEAAAAqAP3/AAARAAEAAABCABEAAAARAAEAAAALADsAAAARAAEAAAABADAAAAARAAEAAAASAEoAAQAAAAAAAAASAEsAAQAAAAEAAAATAEoAAQABAAAAAAATAEsAAQABAAEAAABEAP3/AQAAAAAAAABEAP7/AQAAAAEAAABFAP3/AQABAAAAAABFAP7/AQABAAEAAAAZABkAAQAAAAAAAAAZABoAAQAAAAEAAAAaABkAAQABAAAAAAAaABoAAQABAAEAAAAoADAAAQADAAAAAAD6/xUAAQADAAAAAAA8AEMAAQADAAAAAAAJADkAAQAJAAEAAAAKADkAAQAKAAEAAAA2ADEAAQADAAAAAAA0AEcAAgAAAAAAAAA0AEgAAgAAAAEAAAA0AEkAAgAAAAIAAAA0AEoAAgAAAAMAAAA1AEcAAgABAAAAAAA1AEgAAgABAAEAAAA1AEkAAgABAAIAAAA1AEoAAgABAAMAAAA2AEcAAgACAAAAAAA2AEgAAgACAAEAAAA2AEkAAgACAAIAAAA2AEoAAgACAAMAAAA3AEgAAgADAAEAAAA3AEkAAgADAAIAAAA3AEoAAgADAAMAAAAlAPr/AgAAAAAAAAAlAPv/AgAAAAEAAAAlAPz/AgAAAAIAAAAlAP3/AgAAAAMAAAAmAPr/AgABAAAAAAAmAPv/AgABAAEAAAAmAPz/AgABAAIAAAAmAP3/AgABAAMAAAAnAPr/AgACAAAAAAAnAPv/AgACAAEAAAAnAPz/AgACAAIAAAAnAP3/AgACAAMAAAAoAPv/AgADAAEAAAAoAPz/AgADAAIAAAAoAP3/AgADAAMAAAAHACMAAgAAAAAAAAAHACQAAgAAAAEAAAAHACUAAgAAAAIAAAAHACYAAgAAAAMAAAAIACMAAgABAAAAAAAIACQAAgABAAEAAAAIACUAAgABAAIAAAAIACYAAgABAAMAAAAJACMAAgACAAAAAAAJACQAAgACAAEAAAAJACUAAgACAAIAAAAJACYAAgACAAMAAAAKACQAAgADAAEAAAAKACUAAgADAAIAAAAKACYAAgADAAMAAAAAAEgAAgAAAAAAAAAAAEkAAgAAAAEAAAAAAEoAAgAAAAIAAAAAAEsAAgAAAAMAAAABAEgAAgABAAAAAAABAEkAAgABAAEAAAABAEoAAgABAAIAAAABAEsAAgABAAMAAAACAEgAAgACAAAAAAACAEkAAgACAAEAAAACAEoAAgACAAIAAAACAEsAAgACAAMAAAADAEkAAgADAAEAAAADAEoAAgADAAIAAAADAEsAAgADAAMAAAAmAEwAAgASAAQAAAAnAEwAAgATAAQAAAAoAEwAAgAUAAQAAAAJAP3/AgASAAQAAAAKAP3/AgATAAQAAAALAP3/AgAUAAQAAAA3ACUAAgAWAAAAAAA3ACYAAgAWAAEAAAA4ACUAAgAXAAAAAAA4ACYAAgAXAAEAAAAbACoAAgAJAAEAAAAbACsAAgAJAAIAAAAbACwAAgAJAAMAAAAbAC0AAgAJAAQAAAAcACkAAgAKAAAAAAAcACoAAgAKAAEAAAAcACsAAgAKAAIAAAAcACwAAgAKAAMAAAAcAC0AAgAKAAQAAAAcAC4AAgAKAAUAAAAdACkAAgALAAAAAAAdACoAAgALAAEAAAAdACsAAgALAAIAAAAdACwAAgALAAMAAAAdAC0AAgALAAQAAAAdAC4AAgALAAUAAAAeACkAAgAMAAAAAAAeACoAAgAMAAEAAAAeACsAAgAMAAIAAAAeACwAAgAMAAMAAAAeAC0AAgAMAAQAAAALAEkAAgAJAAEAAAALAEoAAgAJAAIAAAALAEsAAgAJAAMAAAALAEwAAgAJAAQAAAAMAEgAAgAKAAAAAAAMAEkAAgAKAAEAAAAMAEoAAgAKAAIAAAAMAEsAAgAKAAMAAAAMAEwAAgAKAAQAAAAMAE0AAgAKAAUAAAANAEgAAgALAAAAAAANAEkAAgALAAEAAAANAEoAAgALAAIAAAANAEsAAgALAAMAAAANAEwAAgALAAQAAAANAE0AAgALAAUAAAAOAEgAAgAMAAAAAAAOAEkAAgAMAAEAAAAOAEoAAgAMAAIAAAAOAEsAAgAMAAMAAAAOAEwAAgAMAAQAAAD3/xAAAgADAAUAAAA=")
+tile_map_data = PackedByteArray("AAD5/yYAAAAEAAMAAAD5/ycAAAAEAAQAAAD5/ygAAAAEAAUAAAD5/ykAAAAEAAYAAAD6/yYAAAAFAAMAAAD6/ycAAAAFAAQAAAD4/zkAAAAEAAMAAAD4/zoAAAAEAAQAAAD4/zsAAAAEAAUAAAD4/zwAAAAEAAYAAAD5/zkAAAAFAAMAAAD5/zoAAAAFAAQAAABCAAUAAAAEAAMAAABCAAYAAAAEAAQAAABCAAcAAAAEAAUAAABCAAgAAAAEAAYAAABDAAUAAAAFAAMAAABDAAYAAAAFAAQAAABCAB4AAAAEAAMAAABCAB8AAAAEAAQAAABCACAAAAAEAAUAAABCACEAAAAEAAYAAABDAB4AAAAFAAMAAABDAB8AAAAFAAQAAABDADkAAAAEAAMAAABDADoAAAAEAAQAAABDADsAAAAEAAUAAABDADwAAAAEAAYAAABEADkAAAAFAAMAAABEADoAAAAFAAQAAAAiAEIAAAAHAAAAAAAiAEMAAAAHAAEAAAAjAEIAAAAIAAAAAAAjAEMAAAAIAAEAAAAWAP7/AAAHAAAAAAAWAP//AAAHAAEAAAAXAP7/AAAIAAAAAAAXAP//AAAIAAEAAAAxACUAAAAKAAYAAAAxACYAAAAKAAcAAAAyACUAAAALAAYAAAAyACYAAAALAAcAAAA+AEoAAAAPAAMAAAA+AEsAAAAPAAQAAAA+AEwAAAAPAAUAAAA+AE0AAAAPAAYAAAA/AEoAAAAQAAMAAAA/AEsAAAAQAAQAAAA/AEwAAAAQAAUAAAA/AE0AAAAQAAYAAAAKAEQAAAARAAEAAAAkAB4AAAARAAEAAAAYAAcAAAARAAEAAAAqAP3/AAARAAEAAABCABEAAAARAAEAAAALADsAAAARAAEAAAABADAAAAARAAEAAAASAEoAAQAAAAAAAAASAEsAAQAAAAEAAAATAEoAAQABAAAAAAATAEsAAQABAAEAAABEAP3/AQAAAAAAAABEAP7/AQAAAAEAAABFAP3/AQABAAAAAABFAP7/AQABAAEAAAAZABkAAQAAAAAAAAAZABoAAQAAAAEAAAAaABkAAQABAAAAAAAaABoAAQABAAEAAAAoADAAAQADAAAAAAD6/xUAAQADAAAAAAA8AEMAAQADAAAAAAAJADkAAQAJAAEAAAAKADkAAQAKAAEAAAA2ADEAAQADAAAAAAA0AEcAAgAAAAAAAAA0AEgAAgAAAAEAAAA0AEkAAgAAAAIAAAA0AEoAAgAAAAMAAAA1AEcAAgABAAAAAAA1AEgAAgABAAEAAAA1AEkAAgABAAIAAAA1AEoAAgABAAMAAAA2AEcAAgACAAAAAAA2AEgAAgACAAEAAAA2AEkAAgACAAIAAAA2AEoAAgACAAMAAAA3AEgAAgADAAEAAAA3AEkAAgADAAIAAAA3AEoAAgADAAMAAAAlAPr/AgAAAAAAAAAlAPv/AgAAAAEAAAAlAPz/AgAAAAIAAAAlAP3/AgAAAAMAAAAmAPr/AgABAAAAAAAmAPv/AgABAAEAAAAmAPz/AgABAAIAAAAmAP3/AgABAAMAAAAnAPr/AgACAAAAAAAnAPv/AgACAAEAAAAnAPz/AgACAAIAAAAnAP3/AgACAAMAAAAoAPv/AgADAAEAAAAoAPz/AgADAAIAAAAoAP3/AgADAAMAAAAHACMAAgAAAAAAAAAHACQAAgAAAAEAAAAHACUAAgAAAAIAAAAHACYAAgAAAAMAAAAIACMAAgABAAAAAAAIACQAAgABAAEAAAAIACUAAgABAAIAAAAIACYAAgABAAMAAAAJACMAAgACAAAAAAAJACQAAgACAAEAAAAJACUAAgACAAIAAAAJACYAAgACAAMAAAAKACQAAgADAAEAAAAKACUAAgADAAIAAAAKACYAAgADAAMAAAAAAEgAAgAAAAAAAAAAAEkAAgAAAAEAAAAAAEoAAgAAAAIAAAAAAEsAAgAAAAMAAAABAEgAAgABAAAAAAABAEkAAgABAAEAAAABAEoAAgABAAIAAAABAEsAAgABAAMAAAACAEgAAgACAAAAAAACAEkAAgACAAEAAAACAEoAAgACAAIAAAACAEsAAgACAAMAAAADAEkAAgADAAEAAAADAEoAAgADAAIAAAADAEsAAgADAAMAAAAmAEwAAgASAAQAAAAnAEwAAgATAAQAAAAoAEwAAgAUAAQAAAAJAP3/AgASAAQAAAAKAP3/AgATAAQAAAALAP3/AgAUAAQAAAA3ACUAAgAWAAAAAAA3ACYAAgAWAAEAAAA4ACUAAgAXAAAAAAA4ACYAAgAXAAEAAAAbACoAAgAJAAEAAAAbACsAAgAJAAIAAAAbACwAAgAJAAMAAAAbAC0AAgAJAAQAAAAcACkAAgAKAAAAAAAcACoAAgAKAAEAAAAcACsAAgAKAAIAAAAcACwAAgAKAAMAAAAcAC0AAgAKAAQAAAAcAC4AAgAKAAUAAAAdACkAAgALAAAAAAAdACoAAgALAAEAAAAdACsAAgALAAIAAAAdACwAAgALAAMAAAAdAC0AAgALAAQAAAAdAC4AAgALAAUAAAAeACkAAgAMAAAAAAAeACoAAgAMAAEAAAAeACsAAgAMAAIAAAAeACwAAgAMAAMAAAAeAC0AAgAMAAQAAAALAEkAAgAJAAEAAAALAEoAAgAJAAIAAAALAEsAAgAJAAMAAAALAEwAAgAJAAQAAAAMAEgAAgAKAAAAAAAMAEkAAgAKAAEAAAAMAEoAAgAKAAIAAAAMAEsAAgAKAAMAAAAMAEwAAgAKAAQAAAAMAE0AAgAKAAUAAAANAEgAAgALAAAAAAANAEkAAgALAAEAAAANAEoAAgALAAIAAAANAEsAAgALAAMAAAANAEwAAgALAAQAAAANAE0AAgALAAUAAAAOAEgAAgAMAAAAAAAOAEkAAgAMAAEAAAAOAEoAAgAMAAIAAAAOAEsAAgAMAAMAAAAOAEwAAgAMAAQAAAD3/xAAAgADAAUAAAD3//3/AAAEAAMAAAD3//7/AAAEAAQAAAD3////AAAEAAUAAAD3/wAAAAAEAAYAAAD4//3/AAAFAAMAAAD4//7/AAAFAAQAAAARAPz/AAAEAAMAAAARAP3/AAAEAAQAAAARAP7/AAAEAAUAAAARAP//AAAEAAYAAAASAPz/AAAFAAMAAAASAP3/AAAFAAQAAAAvAPv/AAAEAAMAAAAvAPz/AAAEAAQAAAAvAP3/AAAEAAUAAAAvAP7/AAAEAAYAAAAwAPv/AAAFAAMAAAAwAPz/AAAFAAQAAAAUAA8AAAAEAAMAAAAUABAAAAAEAAQAAAAUABEAAAAEAAUAAAAUABIAAAAEAAYAAAAVAA8AAAAFAAMAAAAVABAAAAAFAAQAAAASABoAAAAEAAMAAAASABsAAAAEAAQAAAASABwAAAAEAAUAAAASAB0AAAAEAAYAAAATABoAAAAFAAMAAAATABsAAAAFAAQAAAAXACkAAAAEAAMAAAAXACoAAAAEAAQAAAAXACsAAAAEAAUAAAAXACwAAAAEAAYAAAAYACkAAAAFAAMAAAAYACoAAAAFAAQAAAAcAEcAAAAEAAMAAAAcAEgAAAAEAAQAAAAcAEkAAAAEAAUAAAAcAEoAAAAEAAYAAAAdAEcAAAAFAAMAAAAdAEgAAAAFAAQAAAAiADUAAAAEAAMAAAAiADYAAAAEAAQAAAAiADcAAAAEAAUAAAAiADgAAAAEAAYAAAAjADUAAAAFAAMAAAAjADYAAAAFAAQAAAA=")
 tile_set = SubResource("TileSet_537q2")
 
 [node name="spawnpoints" type="Node2D" parent="."]
@@ -574,16 +580,29 @@ tile_set = SubResource("TileSet_j86ge")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uou7t")
 
+[node name="postfx2" type="CanvasLayer" parent="."]
+layer = 19
+
+[node name="ColorRect" type="ColorRect" parent="postfx2"]
+material = SubResource("ShaderMaterial_gu8pw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="postfx" type="CanvasLayer" parent="."]
 layer = 19
 
-[node name="ColorRect" type="ColorRect" parent="postfx"]
-material = SubResource("ShaderMaterial_gu8pw")
-offset_left = -1500.0
-offset_top = -1117.0
-offset_right = 2772.0
-offset_bottom = 1664.0
-color = Color(0, 0, 0, 1)
+[node name="ColorRect2" type="ColorRect" parent="postfx"]
+z_index = 8
+material = SubResource("ShaderMaterial_vc442")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = 0
@@ -675,6 +694,7 @@ scale = Vector2(1, 1)
 texture = ExtResource("9_qanhd")
 
 [node name="Sprite2D12" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(-90, 622)
 rotation = 2.09439
@@ -682,6 +702,7 @@ scale = Vector2(0.787445, 0.733962)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D13" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(-92, 628)
 rotation = 2.09439
@@ -689,6 +710,7 @@ scale = Vector2(0.052105, 0.0533289)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D14" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(-91, 630)
 rotation = 2.09439
@@ -696,6 +718,7 @@ scale = Vector2(0.0138226, 0.0117644)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D15" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(-106.836, 925.275)
 rotation = 2.09439
@@ -703,6 +726,7 @@ scale = Vector2(0.787445, 0.733962)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D16" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(-108.836, 931.275)
 rotation = 2.09439
@@ -710,6 +734,7 @@ scale = Vector2(0.052105, 0.0533289)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D17" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(-107.836, 933.275)
 rotation = 2.09439
@@ -717,6 +742,7 @@ scale = Vector2(0.0138226, 0.0117644)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D18" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1095.02, 924.005)
 rotation = 2.03711
@@ -724,6 +750,7 @@ scale = Vector2(0.787445, 0.733962)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D19" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1093.02, 930.005)
 rotation = 2.03711
@@ -731,6 +758,7 @@ scale = Vector2(0.052105, 0.0533289)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D20" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1094.02, 932.005)
 rotation = 2.03711
@@ -738,6 +766,7 @@ scale = Vector2(0.0138226, 0.0117644)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D21" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1077.02, 494.005)
 rotation = 2.03711
@@ -745,6 +774,7 @@ scale = Vector2(0.787445, 0.733962)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D22" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1075.02, 500.005)
 rotation = 2.03711
@@ -752,6 +782,7 @@ scale = Vector2(0.052105, 0.0533289)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D23" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1076.02, 502.005)
 rotation = 2.03711
@@ -759,6 +790,7 @@ scale = Vector2(0.0138226, 0.0117644)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D24" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1079.02, 93.0052)
 rotation = 2.03711
@@ -766,6 +798,7 @@ scale = Vector2(0.787445, 0.733962)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D25" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1077.02, 99.0051)
 rotation = 2.03711
@@ -773,8 +806,201 @@ scale = Vector2(0.052105, 0.0533289)
 texture = ExtResource("10_we87c")
 
 [node name="Sprite2D26" type="Sprite2D" parent="."]
+z_index = 25
 material = SubResource("CanvasItemMaterial_gi4sd")
 position = Vector2(1078.02, 101.005)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D27" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(776.023, -65.9948)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D28" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(774.022, -59.9949)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D29" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(775.022, -57.9948)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D30" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(294.023, -51.9948)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D31" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(292.022, -45.9949)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D32" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(293.022, -43.9948)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D33" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(341.023, 251.005)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D34" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(339.022, 257.005)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D35" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(340.022, 259.005)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D36" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(308.023, 426.005)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D37" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(306.022, 432.005)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D38" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(307.022, 434.005)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D39" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(391.023, 668.005)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D40" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(389.022, 674.005)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D41" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(390.022, 676.005)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D42" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(567.023, 859.005)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D43" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(565.022, 865.005)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D44" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(566.022, 867.005)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D45" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(473.023, 1147.01)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D46" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(471.022, 1153.01)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D47" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(472.022, 1155.01)
+rotation = 2.03711
+scale = Vector2(0.0138226, 0.0117644)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D48" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(-120.978, -34.9948)
+rotation = 2.03711
+scale = Vector2(0.787445, 0.733962)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D49" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(-122.978, -28.995)
+rotation = 2.03711
+scale = Vector2(0.052105, 0.0533289)
+texture = ExtResource("10_we87c")
+
+[node name="Sprite2D50" type="Sprite2D" parent="."]
+z_index = 25
+material = SubResource("CanvasItemMaterial_gi4sd")
+position = Vector2(-121.978, -26.9948)
 rotation = 2.03711
 scale = Vector2(0.0138226, 0.0117644)
 texture = ExtResource("10_we87c")

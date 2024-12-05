@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7svyjw6i76uv"]
+[gd_scene load_steps=8 format=3 uid="uid://b7svyjw6i76uv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_f1t82"]
 [ext_resource type="Texture2D" uid="uid://dy1kguvgmswug" path="res://Assets/enemy.png" id="2_ox6sv"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_6qja8"]
+[ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="3_62hmw"]
+[ext_resource type="Theme" uid="uid://csnufeyywdlxy" path="res://Assets/main_theme.tres" id="5_v8q0u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_016ns"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ve8f5"]
 radius = 24.0
-height = 96.0
+height = 80.0
 
 [node name="Enemy0" type="Node2D"]
 
@@ -33,8 +35,10 @@ texture = ExtResource("2_ox6sv")
 [node name="attack_hitbox" type="Area2D" parent="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attack_hitbox"]
-position = Vector2(40, 0)
+position = Vector2(16, 0)
 shape = SubResource("CapsuleShape2D_ve8f5")
+
+[node name="TrailParticles" parent="CharacterBody2D" instance=ExtResource("3_62hmw")]
 
 [node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
 script = ExtResource("3_6qja8")
@@ -45,6 +49,7 @@ offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -37.0
+theme = ExtResource("5_v8q0u")
 value = 100.0
 allow_greater = true
 allow_lesser = true

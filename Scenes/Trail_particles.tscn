@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmakk7wpc1mv3"]
+
+[sub_resource type="Curve" id="Curve_x0hfa"]
+max_value = 19.96
+_data = [Vector2(0, 1.53539), 0.0, 23.1248, 0, 0, Vector2(0.995122, 0.043956), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_w1p6o"]
+colors = PackedColorArray(0.0264, 0.11, 0.0319733, 0.576471, 0, 1, 0.0666666, 0)
+
+[node name="TrailParticles" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 16
+lifetime = 1.25
+emission_shape = 1
+emission_sphere_radius = 7.86
+spread = 53.25
+gravity = Vector2(0, 0)
+radial_accel_min = 28.57
+radial_accel_max = 62.5
+angle_min = -720.0
+angle_max = -720.0
+scale_amount_curve = SubResource("Curve_x0hfa")
+color_ramp = SubResource("Gradient_w1p6o")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmjfqqdkxfh0o"]
+[gd_scene load_steps=7 format=3 uid="uid://dmjfqqdkxfh0o"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_ram65"]
 [ext_resource type="Texture2D" uid="uid://ci1bu03o55hky" path="res://Assets/enemy2.png" id="2_bv2m2"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_ekeob"]
+[ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="3_tcoqx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0njb"]
 radius = 23.0
@@ -37,6 +38,9 @@ texture = ExtResource("2_bv2m2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attack_hitbox"]
 position = Vector2(15, 0)
 shape = SubResource("CapsuleShape2D_5hd35")
+
+[node name="TrailParticles" parent="CharacterBody2D" instance=ExtResource("3_tcoqx")]
+z_index = -1
 
 [node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
 script = ExtResource("3_ekeob")
