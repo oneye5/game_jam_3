@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://822nyoinkp8w"]
+[gd_scene load_steps=8 format=3 uid="uid://822nyoinkp8w"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_3.gd" id="1_taafx"]
 [ext_resource type="Texture2D" uid="uid://cu3jhqe64hwf7" path="res://Assets/enemy3.png" id="2_1phr3"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_faikb"]
 [ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="3_sakrv"]
+[ext_resource type="AudioStream" uid="uid://d2dwyb0a6ahh5" path="res://Assets/FreeSFX/FreeSFX/GameSFX/FootStep/Retro FootStep 03.wav" id="4_3o02l"]
+[ext_resource type="Theme" uid="uid://csnufeyywdlxy" path="res://Assets/main_theme.tres" id="5_cgtiw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_87c8f"]
 radius = 23.0
@@ -17,11 +19,13 @@ script = ExtResource("1_taafx")
 acceleration = 40.0
 friction = 0.8
 max_health = 180.0
-reload_time = 0.7
+reload_time = 1.0
 min_range = 150.0
-max_range = 300.0
-max_vel = 50.0
+max_range = 500.0
+max_vel = 150.0
 rotation_lerp = 0.02
+acceptable_aim_error = 0.4
+predict_factor = 0.004
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_87c8f")
@@ -31,6 +35,11 @@ rotation = 1.5708
 texture = ExtResource("2_1phr3")
 
 [node name="TrailParticles" parent="CharacterBody2D" instance=ExtResource("3_sakrv")]
+z_index = -1
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("4_3o02l")
+max_polyphony = 6
 
 [node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
 script = ExtResource("3_faikb")
@@ -41,6 +50,7 @@ offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -37.0
+theme = ExtResource("5_cgtiw")
 allow_greater = true
 allow_lesser = true
 metadata/_edit_use_anchors_ = true

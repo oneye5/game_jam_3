@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3l8ks5eoekxm"]
+[gd_scene load_steps=8 format=3 uid="uid://c3l8ks5eoekxm"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_oflt4"]
 [ext_resource type="Texture2D" uid="uid://be6wp0i5gjinp" path="res://Assets/enemy5.png" id="2_nqkgl"]
 [ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="3_85vhb"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_is8ry"]
+[ext_resource type="Theme" uid="uid://csnufeyywdlxy" path="res://Assets/main_theme.tres" id="5_06x27"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lj21m"]
 
@@ -22,7 +23,7 @@ acceleration = 90.0
 friction = 0.8
 max_health = 350.0
 reload_time = 0.25
-damage = 15
+damage = 17
 knockback = 2000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -49,6 +50,7 @@ offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -37.0
+theme = ExtResource("5_06x27")
 allow_greater = true
 allow_lesser = true
 metadata/_edit_use_anchors_ = true

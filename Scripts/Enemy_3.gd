@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var current_health = max_health
 @onready var healthbar = $"../mover/ProgressBar"
 @onready var remaining_reload : float = reload_time
+@onready var sound_shoot = $shoot_sound
 @export var enraged_boost : float = 2
 
 @export var min_range : float
@@ -17,6 +18,7 @@ extends CharacterBody2D
 
 @export var rotation_lerp = 0.01
 @export var acceptable_aim_error = 0.5
+@export var predict_factor = 1000.0
 
 func _process(delta: float) -> void:
 	move_and_slide()
@@ -44,14 +46,23 @@ func _tick_update(delta):
 	rotation = velocity.angle()
 	velocity += wishDir * acceleration
 
+func get_desired_rotation():
+	var delta = global_position - manager_singleton.instance().player.global_position
+	var dist = sqrt((delta.x*delta.x) + (delta.y*delta.y))
+	var predict_time = dist * predict_factor
+	var predicted_pos = manager_singleton.instance().player.velocity * predict_time + manager_singleton.instance().player.global_position
+	delta = predicted_pos - global_position 
+	return  delta.normalized().angle() 
+	
+
 func aim():
-	var desired_rotation = (manager_singleton.instance().player.global_position - get_fire_offset(rotation) - global_position).normalized().angle()
+	var desired_rotation = get_desired_rotation()
 	rotation = lerp(rotation, desired_rotation, rotation_lerp)
 	
 
 func aim_and_fire():
 	aim()
-	var desired_rotation = (manager_singleton.instance().player.global_position - global_position).normalized().angle()
+	var desired_rotation = get_desired_rotation()
 	if  abs(desired_rotation - rotation) < acceptable_aim_error:
 		_shoot()
 
@@ -65,7 +76,7 @@ func _shoot():
 	proj.rotation = rotation 
 	
 	proj.global_position += get_fire_offset(rotation)
-	
+	sound_shoot.play()
 	get_parent().get_parent().add_child(proj)
 	remaining_reload = reload_time
 

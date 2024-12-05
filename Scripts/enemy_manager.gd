@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		if remaining_wave_break <= 0:
 			wave_started = true
 			remaining_wave_break = wave_break_time
+			manager_singleton.instance().player.sound_wave_start.play()
 			manager_singleton.instance().player.show_floating_text("Wave " + str(wave_number + 1) + " begins!", 3, Vector2.ZERO, 15, manager_singleton.instance().player.joy_meter.get_parent())
 	else: 
 		remaining_spawn_reload -= delta

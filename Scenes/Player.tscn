@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckc2wb5ghhmsp"]
+[gd_scene load_steps=26 format=3 uid="uid://ckc2wb5ghhmsp"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0gdk2"]
 [ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_5hhlv"]
@@ -9,6 +9,11 @@
 [ext_resource type="Script" path="res://Scripts/enemy_manager.gd" id="5_x6aua"]
 [ext_resource type="Theme" uid="uid://csnufeyywdlxy" path="res://Assets/main_theme.tres" id="6_2k6xb"]
 [ext_resource type="Script" path="res://Scripts/round_number_text.gd" id="6_7nsfm"]
+[ext_resource type="AudioStream" uid="uid://r7y5e8v31dqr" path="res://Assets/sounds/bang.wav" id="6_p2hvo"]
+[ext_resource type="AudioStream" uid="uid://bj4qym38air5r" path="res://Assets/FreeSFX/FreeSFX/GameSFX/Impact/Retro Impact Punch Hurt 01.wav" id="7_hcsn1"]
+[ext_resource type="AudioStream" uid="uid://dbh0n55403gw" path="res://Assets/FreeSFX/FreeSFX/GameSFX/Events/Retro Event Acute 11.wav" id="8_30vgw"]
+[ext_resource type="AudioStream" uid="uid://em8da1kewtw7" path="res://Assets/FreeSFX/FreeSFX/GameSFX/Bounce Jump/Retro Jump StereoUP Simple 05.wav" id="9_1ys5c"]
+[ext_resource type="AudioStream" uid="uid://d3diupvwg5oaq" path="res://Assets/sounds/level1-[AudioTrimmer.com].wav" id="10_p0opm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jo32s"]
 
@@ -108,6 +113,23 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_o0qvl")
 
 [node name="TrailParticles" parent="CharacterBody2D" instance=ExtResource("5_h2nli")]
+
+[node name="Sounds" type="Node2D" parent="CharacterBody2D"]
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="CharacterBody2D/Sounds"]
+stream = ExtResource("6_p2hvo")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="CharacterBody2D/Sounds"]
+stream = ExtResource("7_hcsn1")
+
+[node name="joy_add" type="AudioStreamPlayer2D" parent="CharacterBody2D/Sounds"]
+stream = ExtResource("8_30vgw")
+
+[node name="dash" type="AudioStreamPlayer2D" parent="CharacterBody2D/Sounds"]
+stream = ExtResource("9_1ys5c")
+
+[node name="Level1-[audioTrimmer_com]" type="AudioStreamPlayer" parent="CharacterBody2D/Sounds"]
+stream = ExtResource("10_p0opm")
 
 [node name="children" type="Node" parent="."]
 

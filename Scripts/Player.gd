@@ -17,6 +17,11 @@ extends CharacterBody2D
 @export var dash_duration = 0.1
 @export var dash_velocity = 800
 @onready var enemy_manager = $"../enemies"
+@onready var sound_shoot = $Sounds/shoot
+@onready var sound_hurt = $Sounds/hurt
+@onready var sound_add_joy = $Sounds/joy_add
+@onready var sound_dash = $Sounds/dash
+@onready var sound_wave_start = $"Sounds/Level1-[audioTrimmer_com]"
 var dash_wishDir : Vector2 = Vector2.ONE
 var remaining_dash_duration : float = -1
 var remaining_dash_reload : float = 0
@@ -34,6 +39,7 @@ func damage_player(amount, knockback):
 	joy -= amount
 	velocity = knockback
 	remaining_dash_duration = -1 # to avoid knockback from being overwritten
+	sound_hurt.play()
 	_tick_die()
 
 func _tick_die():
@@ -94,6 +100,7 @@ func _tick_controls():
 		newProjectile.rotation = rotation
 		children.add_child(newProjectile)
 		animatedSprite.play("shoot")
+		sound_shoot.play()
 		
 	_tick_accelerate(wishDir)
 
@@ -110,6 +117,7 @@ func _tick_animation():
 func add_joy(amount):
 	show_floating_text("+" + str(amount) + "joy",1,Vector2.ONE*200,30,joy_meter.get_parent())
 	joy += amount
+	sound_add_joy.play()
 
 func _tick_dash(delta):
 	if not manager_singleton.instance().upgrade_dash:
@@ -125,6 +133,7 @@ func _tick_dash(delta):
 		remaining_dash_duration = dash_duration
 		remaining_dash_reload = dash_reload_time
 		dash_wishDir = (global_position - get_global_mouse_position()).normalized() * -1.0 
+		sound_dash.play()
 		if joy - dash_cost > 1:
 			joy -= dash_cost
 		

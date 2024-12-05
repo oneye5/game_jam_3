@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_ynnna"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkq6a"]
+radius = 16.0
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_ynnna")
@@ -12,7 +13,7 @@ script = ExtResource("1_ynnna")
 shape = SubResource("CircleShape2D_jkq6a")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_oyesm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

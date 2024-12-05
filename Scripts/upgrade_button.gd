@@ -1,5 +1,6 @@
 extends Button
 @export var type : int = 0
+@onready var sound_buy = $"../../../AudioStreamPlayer2D"
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
@@ -60,4 +61,5 @@ func _pressed():
 			return
 		manager_singleton.instance().player.joy -= cost
 		manager_singleton.instance().upgrade_dash = true
+	sound_buy.play()
 	

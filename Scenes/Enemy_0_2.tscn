@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc2lr3a88xwef"]
+[gd_scene load_steps=8 format=3 uid="uid://cc2lr3a88xwef"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy_0.gd" id="1_y6d4k"]
 [ext_resource type="Texture2D" uid="uid://bnenaq0t5ncoc" path="res://Assets/enemy4.png" id="2_5s7o3"]
 [ext_resource type="Script" path="res://Scripts/mover.gd" id="3_3bu7v"]
 [ext_resource type="PackedScene" uid="uid://dmakk7wpc1mv3" path="res://Scenes/Trail_particles.tscn" id="3_15qbw"]
+[ext_resource type="Theme" uid="uid://csnufeyywdlxy" path="res://Assets/main_theme.tres" id="5_6bc5f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0u48"]
 
@@ -49,6 +50,7 @@ offset_left = -48.0
 offset_top = -64.0
 offset_right = 48.0
 offset_bottom = -37.0
+theme = ExtResource("5_6bc5f")
 value = 100.0
 allow_greater = true
 allow_lesser = true

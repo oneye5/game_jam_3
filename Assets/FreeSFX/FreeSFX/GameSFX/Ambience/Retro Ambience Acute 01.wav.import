@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cq6efg7f1q7is"
+path="res://.godot/imported/Retro Ambience Acute 01.wav-3d51ba678a64ad0030d72f37a3534394.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSFX/FreeSFX/GameSFX/Ambience/Retro Ambience Acute 01.wav"
+dest_files=["res://.godot/imported/Retro Ambience Acute 01.wav-3d51ba678a64ad0030d72f37a3534394.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

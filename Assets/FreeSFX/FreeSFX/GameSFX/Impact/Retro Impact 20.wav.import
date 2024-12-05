@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6b6e5ehm4ou6"
+path="res://.godot/imported/Retro Impact 20.wav-781598f8069f61a03ee5da574d2eaa80.sample"
+
+[deps]
+
+source_file="res://Assets/FreeSFX/FreeSFX/GameSFX/Impact/Retro Impact 20.wav"
+dest_files=["res://.godot/imported/Retro Impact 20.wav-781598f8069f61a03ee5da574d2eaa80.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
