@@ -107,6 +107,7 @@ sprite_frames = SubResource("SpriteFrames_o0qvl")
 [node name="children" type="Node" parent="."]
 
 [node name="Player_UI" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="joy_meter" type="ProgressBar" parent="Player_UI"]
 anchors_preset = 7
@@ -149,6 +150,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_3c2mq")
+
+[node name="death_screen" type="ColorRect" parent="Player_UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27, 0, 0, 0.521569)
+
+[node name="Label" type="Label" parent="Player_UI/death_screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207
+anchor_top = 0.418
+anchor_right = 0.777
+anchor_bottom = 0.594
+offset_left = 0.53598
+offset_top = 0.135986
+offset_right = -0.104004
+offset_bottom = 0.0879822
+theme_override_font_sizes/font_size = 71
+text = "You ran out of joy,
+"
+
+[node name="Label2" type="Label" parent="Player_UI/death_screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = 0.56
+anchor_right = 0.595
+anchor_bottom = 0.687
+offset_left = 0.18396
+offset_top = 0.119995
+offset_right = 0.559937
+offset_bottom = -0.176025
+theme_override_font_sizes/font_size = 31
+text = "press R to restart
+"
+horizontal_alignment = 1
 
 [node name="CameraTransform" type="Node2D" parent="."]
 script = ExtResource("4_mkc7n")

@@ -4,9 +4,11 @@
 [ext_resource type="Script" path="res://Scripts/buy_menu.gd" id="1_yflx7"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+layer = 6
 script = ExtResource("1_yflx7")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

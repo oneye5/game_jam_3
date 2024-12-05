@@ -13,8 +13,11 @@ var enemies : Array = []
 var current_enemy_count = 0
 @onready var remaining_wave_break = wave_break_time
 
-func _physics_process(delta: float) -> void:
+func _clean():
 	enemies = enemies.filter(func(enemy): return is_instance_valid(enemy))
+
+func _physics_process(delta: float) -> void:
+	_clean()
 	
 	if not wave_started:
 		remaining_wave_break -= delta
@@ -65,6 +68,7 @@ func _physics_process(delta: float) -> void:
 		
 func _get_spawnpoint() -> Vector2:
 	var pos : Vector2
+	_clean()
 	while(true):
 		var index = round(randf() * (manager_singleton.instance().spawnPoints.size()-1))
 		pos = manager_singleton.instance().spawnPoints[index].global_position
