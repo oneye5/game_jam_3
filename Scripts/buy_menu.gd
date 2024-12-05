@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	manager_singleton.instance().player.joy_meter.value = manager_singleton.instance().player.joy
-	if Input.is_action_just_pressed("buy_menu"):
+	if Input.is_action_just_pressed("buy_menu") and not manager_singleton.instance().player.dead:
 		if buy_panel.visible:
 			buy_panel.visible = false
 			get_tree().paused = false

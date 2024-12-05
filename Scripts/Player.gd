@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var acceleration : float
 @export var friction : float
 @export var reload_time : float = 0.5
-@export var shoot_cost : float = 1.0
+@export var shoot_cost : float = 0.5
 @onready var children = $"../children"
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var remaining_reload = reload_time
@@ -36,9 +36,11 @@ func _ready():
 	manager_singleton.instance().player = self
 
 func damage_player(amount, knockback):
+	if remaining_dash_duration > 0:
+		return
+		
 	joy -= amount
 	velocity = knockback
-	remaining_dash_duration = -1 # to avoid knockback from being overwritten
 	sound_hurt.play()
 	_tick_die()
 

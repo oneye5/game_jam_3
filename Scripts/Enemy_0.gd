@@ -40,6 +40,11 @@ func _tick_die():
 func _damage(num):
 	velocity *= 0.01
 	current_health -= num
+	var preLoadExplode = preload("res://Scenes/expolosion.tscn")
+	var explode = preLoadExplode.instantiate()
+	explode.global_position = global_position
+	explode.rotation = 0
+	self.get_parent().get_parent().add_child(explode)
 	
 
 func _tick_update(d):

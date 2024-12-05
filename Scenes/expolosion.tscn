@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckohf8s7e7uk7"]
+
+[ext_resource type="Script" path="res://Scripts/particle_destroyer.gd" id="1_sciqc"]
+
+[sub_resource type="Curve" id="Curve_d48uq"]
+max_value = 19.96
+_data = [Vector2(0, 1.53539), 0.0, 23.1248, 0, 0, Vector2(0.995122, 0.043956), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_aaij8"]
+offsets = PackedFloat32Array(0, 0.225989, 0.446328, 0.717514)
+colors = PackedColorArray(1, 1, 1, 0.576471, 1, 0.933333, 0, 0.541176, 1, 0, 0, 0.470588, 0, 0, 0, 0.470588)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 16
+lifetime = 1.25
+one_shot = true
+explosiveness = 0.91
+emission_shape = 1
+emission_sphere_radius = 7.86
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 187.5
+radial_accel_min = -83.93
+radial_accel_max = -55.36
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_d48uq")
+color_ramp = SubResource("Gradient_aaij8")
+script = ExtResource("1_sciqc")
