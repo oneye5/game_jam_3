@@ -33,6 +33,13 @@ func _ready():
 func damage_player(amount, knockback):
 	joy -= amount
 	velocity = knockback
+	remaining_dash_duration = -1 # to avoid knockback from being overwritten
+	_tick_die()
+
+func _tick_die():
+	if joy < 0:
+		death_screen.visible = true
+		dead = true
 
 func _tick_reset():
 	if Input.is_action_just_pressed("reset"):
@@ -45,10 +52,6 @@ func _tick_reset():
 		manager_singleton.instance().upgrade_dash = false
 		enemy_manager._clean()
 
-func _tick_die():
-	if joy < 0:
-		death_screen.visible = true
-		dead = true
 
 func _process(delta: float) -> void:
 	if dead:
@@ -67,7 +70,6 @@ func _physics_process(delta: float) -> void:
 	_tick_dash(delta)
 	var cooldown_bonus = manager_singleton.instance().fire_rate_level/2.0
 	remaining_reload -= delta * (1 + cooldown_bonus)
-	_tick_die()
 
 func _tick_controls():
 	var wishDir : Vector2 = Vector2.ZERO

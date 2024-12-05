@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://bal7lrxbb10cm"]
+
+[ext_resource type="Script" path="res://Scripts/Intro.gd" id="1_tyj6j"]
+[ext_resource type="PackedScene" uid="uid://bqbtqhcci32kw" path="res://Scenes/Main.tscn" id="2_k542v"]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_tyj6j")
+next_scene = ExtResource("2_k542v")
+
+[node name="bg" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="fg" type="CanvasLayer" parent="."]
+layer = 7
+
+[node name="ColorRect" type="ColorRect" parent="fg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="fg"]
+anchors_preset = -1
+anchor_left = 0.826
+anchor_top = 0.935
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.552063
+offset_top = 0.119934
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.299547, 0.299547, 0.299547, 1)
+theme_override_font_sizes/font_size = 26
+text = "press R to skip"
+
+[node name="text" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Label" type="Label" parent="text"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "It is christmas, 
+families around the world celebrate"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="text"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "However due to supply issues,
+some children are yet to recieve their presents"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="text"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "These children have become enraged"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="text"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bring them joy"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

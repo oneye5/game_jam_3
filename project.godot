@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="game_jam_3"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/Intro.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=240
 
