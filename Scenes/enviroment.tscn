@@ -685,25 +685,21 @@ texture = ExtResource("8_f6krg")
 [node name="Sprite2D7" type="Sprite2D" parent="."]
 position = Vector2(720.467, 920.467)
 rotation = -0.0146951
-scale = Vector2(1, 1)
 texture = ExtResource("9_qanhd")
 
 [node name="Sprite2D8" type="Sprite2D" parent="."]
 position = Vector2(-63.5332, 368.467)
 rotation = -0.0146951
-scale = Vector2(1, 1)
 texture = ExtResource("9_qanhd")
 
 [node name="Sprite2D9" type="Sprite2D" parent="."]
 position = Vector2(960.467, 216.467)
 rotation = -0.0146951
-scale = Vector2(1, 1)
 texture = ExtResource("9_qanhd")
 
 [node name="Sprite2D10" type="Sprite2D" parent="."]
 position = Vector2(16.4668, 936.467)
 rotation = -0.0146951
-scale = Vector2(1, 1)
 texture = ExtResource("9_qanhd")
 
 [node name="Sprite2D12" type="Sprite2D" parent="."]

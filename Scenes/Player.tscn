@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckc2wb5ghhmsp"]
+[gd_scene load_steps=27 format=3 uid="uid://ckc2wb5ghhmsp"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0gdk2"]
 [ext_resource type="Texture2D" uid="uid://cu144plkcqeve" path="res://Assets/santaDefault.png" id="2_5hhlv"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dbh0n55403gw" path="res://Assets/FreeSFX/FreeSFX/GameSFX/Events/Retro Event Acute 11.wav" id="8_30vgw"]
 [ext_resource type="AudioStream" uid="uid://em8da1kewtw7" path="res://Assets/FreeSFX/FreeSFX/GameSFX/Bounce Jump/Retro Jump StereoUP Simple 05.wav" id="9_1ys5c"]
 [ext_resource type="AudioStream" uid="uid://d3diupvwg5oaq" path="res://Assets/sounds/level1-[AudioTrimmer.com].wav" id="10_p0opm"]
+[ext_resource type="Script" path="res://Scripts/camera_zoom.gd" id="14_haow7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jo32s"]
 
@@ -121,6 +122,7 @@ stream = ExtResource("6_p2hvo")
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="CharacterBody2D/Sounds"]
 stream = ExtResource("7_hcsn1")
+max_polyphony = 6
 
 [node name="joy_add" type="AudioStreamPlayer2D" parent="CharacterBody2D/Sounds"]
 stream = ExtResource("8_30vgw")
@@ -257,6 +259,7 @@ lerpV = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="CameraTransform"]
 zoom = Vector2(1.375, 1.375)
+script = ExtResource("14_haow7")
 
 [node name="enemies" type="Node2D" parent="."]
 script = ExtResource("5_x6aua")

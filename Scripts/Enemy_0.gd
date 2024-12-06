@@ -45,6 +45,7 @@ func _damage(num):
 	explode.global_position = global_position
 	explode.rotation = 0
 	self.get_parent().get_parent().add_child(explode)
+	manager_singleton.instance().player.sound_hurt.play()
 	
 
 func _tick_update(d):

@@ -4,8 +4,6 @@
 
 [sub_resource type="Curve" id="Curve_d48uq"]
 max_value = 19.96
-_data = [Vector2(0, 1.53539), 0.0, 23.1248, 0, 0, Vector2(0.995122, 0.043956), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_aaij8"]
 offsets = PackedFloat32Array(0, 0.225989, 0.446328, 0.717514)

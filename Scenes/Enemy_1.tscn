@@ -40,6 +40,7 @@ position = Vector2(15, 0)
 shape = SubResource("CapsuleShape2D_n71yu")
 
 [node name="TrailParticles" parent="CharacterBody2D" instance=ExtResource("3_2pdta")]
+z_index = -1
 
 [node name="mover" type="Node2D" parent="." node_paths=PackedStringArray("follow")]
 script = ExtResource("3_7vxh1")

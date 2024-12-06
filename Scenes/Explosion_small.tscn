@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://nmn5k68bqags"]
+
+[ext_resource type="Texture2D" uid="uid://b1ptqbm57howr" path="res://Assets/radial_gradient.png" id="1_8508h"]
+[ext_resource type="Script" path="res://Scripts/particle_destroyer.gd" id="2_47jw3"]
+
+[sub_resource type="Curve" id="Curve_w04ky"]
+max_value = 0.25
+_data = [Vector2(0, 0.0192308), 0.0, 0.0, 0, 0, Vector2(0.239024, 0.065934), -0.291304, -0.291304, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_aaij8"]
+offsets = PackedFloat32Array(0, 0.225989, 0.446328, 0.717514)
+colors = PackedColorArray(1, 1, 1, 0.576471, 1, 0.933333, 0, 0.541176, 1, 0, 0, 0.470588, 0, 0, 0, 0.470588)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+randomness = 0.71
+lifetime_randomness = 0.55
+texture = ExtResource("1_8508h")
+emission_shape = 1
+emission_sphere_radius = 7.86
+spread = 25.15
+gravity = Vector2(0, 0)
+initial_velocity_max = 482.14
+radial_accel_min = -83.93
+radial_accel_max = -55.36
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_w04ky")
+color_ramp = SubResource("Gradient_aaij8")
+hue_variation_min = -0.2
+hue_variation_max = 0.36
+script = ExtResource("2_47jw3")

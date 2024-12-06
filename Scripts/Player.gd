@@ -104,6 +104,12 @@ func _tick_controls():
 		animatedSprite.play("shoot")
 		sound_shoot.play()
 		
+		var particle = preload("res://Scenes/Explosion_small.tscn")
+		var p = particle.instantiate()
+		p.position = position
+		p.rotation = rotation
+		children.add_child(p)
+	
 	_tick_accelerate(wishDir)
 
 func _tick_friction():

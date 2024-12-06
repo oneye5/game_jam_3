@@ -11,6 +11,7 @@ colors = PackedColorArray(0.0264, 0.11, 0.0319733, 0.576471, 0, 1, 0.0666666, 0)
 [node name="TrailParticles" type="Node2D"]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
 amount = 16
 lifetime = 1.25
 emission_shape = 1
