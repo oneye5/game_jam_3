@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://du77e88cqrjch"]
+
+[sub_resource type="Gradient" id="Gradient_jdr4i"]
+offsets = PackedFloat32Array(0, 0.039548, 0.960452, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.960452, 1, 1, 1, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 5000
+lifetime = 20.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(5000, 1)
+direction = Vector2(0, 1.925)
+spread = 0.0
+gravity = Vector2(60, 16)
+initial_velocity_max = 455.36
+linear_accel_min = -32.14
+linear_accel_max = 100.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_max = 13.393
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_jdr4i")

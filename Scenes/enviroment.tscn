@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=4 uid="uid://byj14mxjqdhpw"]
+[gd_scene load_steps=27 format=4 uid="uid://byj14mxjqdhpw"]
 
 [ext_resource type="AudioStream" uid="uid://byj6sa5fj1n21" path="res://Assets/FreeSFX/FreeSFX/GameSFX/Ambience/Retro Ambience 02.wav" id="1_awhm2"]
+[ext_resource type="PackedScene" uid="uid://du77e88cqrjch" path="res://Scenes/snow.tscn" id="1_fy6b3"]
 [ext_resource type="TileSet" uid="uid://b6q2uo1thx0uk" path="res://Assets/new_tile_set.tres" id="1_xvlj3"]
 [ext_resource type="Texture2D" uid="uid://bqb34mhplf35s" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Water and Sand/Tileset_Water.png" id="2_xmmd2"]
 [ext_resource type="Texture2D" uid="uid://bt8q0ydrywred" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Props/Atlas/Props.png" id="3_bo3uc"]
@@ -484,6 +485,9 @@ blend_mode = 1
 [node name="Enviroment" type="Node2D"]
 z_index = -1
 metadata/_edit_horizontal_guides_ = [32.0]
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("1_fy6b3")]
+position = Vector2(-304, -167)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_awhm2")
